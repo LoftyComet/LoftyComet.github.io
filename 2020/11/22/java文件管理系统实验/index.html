@@ -22,30 +22,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="凡是过往，皆为序章。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="星茗轩">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手） 实验目标通过java自带的swing、awt包实现类似于记事本的小程序，能够对txt文件进行基本的操作如：新建、打开、保存、复制、粘贴，以及稍微复杂且实用的功能如查找与替换。 实验思路布局打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。 功能菜单栏中就是一个个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA实验之GUI文件管理系统">
+<meta property="og:url" content="http://example.com/2020/11/22/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/index.html">
 <meta property="og:site_name" content="星茗轩">
-<meta property="og:description" content="凡是过往，皆为序章。">
+<meta property="og:description" content="鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手） 实验目标通过java自带的swing、awt包实现类似于记事本的小程序，能够对txt文件进行基本的操作如：新建、打开、保存、复制、粘贴，以及稍微复杂且实用的功能如查找与替换。 实验思路布局打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。 功能菜单栏中就是一个个">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-22T13:20:32.680Z">
+<meta property="article:modified_time" content="2020-11-22T13:48:22.224Z">
 <meta property="article:author" content="流逸">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2020/11/22/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>星茗轩</title>
+  <title>JAVA实验之GUI文件管理系统 | 星茗轩</title>
   
 
 
@@ -143,9 +145,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -161,10 +164,9 @@
       <meta itemprop="name" content="星茗轩">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/22/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/" class="post-title-link" itemprop="url">JAVA实验之GUI文件管理系统</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          JAVA实验之GUI文件管理系统
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -178,6 +180,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -188,7 +197,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手）</p>
+        <p>鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手）</p>
 <h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>通过java自带的swing、awt包实现类似于记事本的小程序，能够对txt文件进行基本的操作如：新建、打开、保存、复制、粘贴，以及稍微复杂且实用的功能如查找与替换。</p>
 <h2 id="实验思路"><a href="#实验思路" class="headerlink" title="实验思路"></a>实验思路</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。</p>
 <h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>菜单栏中就是一个个类似于按钮的东西的陈列，给每个物件添加监听器和监听事件就能实现相应功能，相应功能相当于已经封装好了。<br>此处查找和替换稍微有点不同，需要再创建两个新类，然后在相应的监听器事件中实例化。</p>
@@ -201,169 +210,47 @@
 <h3 id="新窗口功能"><a href="#新窗口功能" class="headerlink" title="新窗口功能"></a>新窗口功能</h3><p>find和replace大同小异，都是创建新类继承JFrame，然后各种用一个函数实现自己功能。我选用FlowLayout布局。find内部功能主要靠indexOf获得目标字符串在内容中的位置然后调整光标选中区域即可。replace就更简单，replaceAll，耗子尾汁。</p>
 <h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>虽然这个项目比较简单，但奈何我太菜，依旧用了大概五六个小时，毕竟刚开始对GUI确实比较陌生。经过这次实验，我感觉收获良多。</p>
 
-      
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>流逸
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/11/22/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/" title="JAVA实验之GUI文件管理系统">http://example.com/2020/11/22/java文件管理系统实验/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/myfirstblog/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="流逸">
-      <meta itemprop="description" content="凡是过往，皆为序章。">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星茗轩">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/17/myfirstblog/" class="post-title-link" itemprop="url">第一篇博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-17 17:30:22 / 修改时间：18:08:24" itemprop="dateCreated datePublished" datetime="2020-11-17T17:30:22+08:00">2020-11-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>暂时没什么好写的就用一些歌词来试试吧,体验一下Markdown的感觉</p>
-<hr>
-<h1 id="Viva-La-Vida"><a href="#Viva-La-Vida" class="headerlink" title="Viva La Vida"></a>Viva La Vida</h1><pre><code>                                                          by  Coldplay</code></pre>
-<h2 id="I-used-to-rule-the-world"><a href="#I-used-to-rule-the-world" class="headerlink" title="I used to rule the world"></a>I used to rule the world</h2><blockquote>
-<p>大千世界曾由我主宰</p>
-</blockquote>
-<h2 id="Seas-would-rise-when-I-gave-the-word"><a href="#Seas-would-rise-when-I-gave-the-word" class="headerlink" title="Seas would rise when I gave the word"></a>Seas would rise when I gave the word</h2><blockquote>
-<p>巨浪也曾因我之命澎湃</p>
-</blockquote>
-<h2 id="Now-in-the-morning-I-sleep-alone"><a href="#Now-in-the-morning-I-sleep-alone" class="headerlink" title="Now in the morning I sleep alone"></a>Now in the morning I sleep alone</h2><blockquote>
-<p>而今我却在黎明独自入眠</p>
-</blockquote>
-<h2 id="Sweep-the-streets-I-used-to-own"><a href="#Sweep-the-streets-I-used-to-own" class="headerlink" title="Sweep the streets I used to own"></a>Sweep the streets I used to own</h2><blockquote>
-<p>在曾属于我的大道落寞徘徊</p>
-</blockquote>
-<h2 id="I-used-to-roll-the-dice"><a href="#I-used-to-roll-the-dice" class="headerlink" title="I used to roll the dice"></a>I used to roll the dice</h2><blockquote>
-<p>凡人生死曾由我主宰</p>
-</blockquote>
-<h2 id="Feel-the-fear-in-my-enemy’s-eyes"><a href="#Feel-the-fear-in-my-enemy’s-eyes" class="headerlink" title="Feel the fear in my enemy’s eyes"></a>Feel the fear in my enemy’s eyes</h2><blockquote>
-<p>尽情品味惊恐在死敌瞳孔绽开</p>
-</blockquote>
-<h2 id="Listen-as-the-crowd-would-sing"><a href="#Listen-as-the-crowd-would-sing" class="headerlink" title="Listen as the crowd would sing"></a>Listen as the crowd would sing</h2><blockquote>
-<p>欣然倾听百姓高歌喝彩</p>
-</blockquote>
-<h2 id="Now-the-old-king-is-dead"><a href="#Now-the-old-king-is-dead" class="headerlink" title="Now the old king is dead"></a>Now the old king is dead</h2><blockquote>
-<p>先王亡矣</p>
-</blockquote>
-<h2 id="Long-live-the-king"><a href="#Long-live-the-king" class="headerlink" title="Long live the king"></a>Long live the king</h2><blockquote>
-<p>新王万代</p>
-</blockquote>
-<h2 id="One-minute-I-held-the-key"><a href="#One-minute-I-held-the-key" class="headerlink" title="One minute I held the key"></a>One minute I held the key</h2><blockquote>
-<p>此刻我手握权位经脉</p>
-</blockquote>
-<h2 id="Next-the-walls-were-closed-on-me"><a href="#Next-the-walls-were-closed-on-me" class="headerlink" title="Next the walls were closed on me"></a>Next the walls were closed on me</h2><blockquote>
-<p>转瞬才知宫墙深似海</p>
-</blockquote>
-<h2 id="And-I-discovered-that-my-castles-stand"><a href="#And-I-discovered-that-my-castles-stand" class="headerlink" title="And I discovered that my castles stand"></a>And I discovered that my castles stand</h2><blockquote>
-<p>恍然发现我的城池</p>
-</blockquote>
-<h2 id="Upon-pillars-of-salt-and-pillars-of-sand"><a href="#Upon-pillars-of-salt-and-pillars-of-sand" class="headerlink" title="Upon pillars of salt and pillars of sand"></a>Upon pillars of salt and pillars of sand</h2><blockquote>
-<p>基底散如盐沙乱似尘埃</p>
-</blockquote>
-<h2 id="I-hear-Jerusalem-bells-are-ringing"><a href="#I-hear-Jerusalem-bells-are-ringing" class="headerlink" title="I hear Jerusalem bells are ringing"></a>I hear Jerusalem bells are ringing</h2><blockquote>
-<p>听那耶路撒冷钟声传来</p>
-</blockquote>
-<h2 id="Roman-Cavalry-choirs-are-singing"><a href="#Roman-Cavalry-choirs-are-singing" class="headerlink" title="Roman Cavalry choirs are singing"></a>Roman Cavalry choirs are singing</h2><blockquote>
-<p>罗马骑兵歌声震彻山海</p>
-</blockquote>
-<h2 id="Be-my-mirror-my-sword-and-shield"><a href="#Be-my-mirror-my-sword-and-shield" class="headerlink" title="Be my mirror my sword and shield"></a>Be my mirror my sword and shield</h2><blockquote>
-<p>担当我的明镜利剑和盾牌</p>
-</blockquote>
-<h2 id="My-missionaries-in-a-foreign-field"><a href="#My-missionaries-in-a-foreign-field" class="headerlink" title="My missionaries in a foreign field"></a>My missionaries in a foreign field</h2><blockquote>
-<p>我的传教士屹立边疆之外</p>
-</blockquote>
-<h2 id="For-some-reason-I-can’t-explain"><a href="#For-some-reason-I-can’t-explain" class="headerlink" title="For some reason I can’t explain"></a>For some reason I can’t explain</h2><blockquote>
-<p>只因一些缘由我无法释怀</p>
-</blockquote>
-<h2 id="Once-you-go-there-was-never"><a href="#Once-you-go-there-was-never" class="headerlink" title="Once you go there was never"></a>Once you go there was never</h2><blockquote>
-<p>一旦你离开这里便不再</p>
-</blockquote>
-<h2 id="Never-an-honest-word"><a href="#Never-an-honest-word" class="headerlink" title="Never an honest word"></a>Never an honest word</h2><blockquote>
-<p>不再有逆耳忠言存在</p>
-</blockquote>
-<h2 id="But-that-was-when-I-ruled-the-world"><a href="#But-that-was-when-I-ruled-the-world" class="headerlink" title="But that was when I ruled the world"></a>But that was when I ruled the world</h2><blockquote>
-<p>而这便是我统治的时代</p>
-</blockquote>
-<h2 id="It-was-the-wicked-and-wild-wind"><a href="#It-was-the-wicked-and-wild-wind" class="headerlink" title="It was the wicked and wild wind"></a>It was the wicked and wild wind</h2><blockquote>
-<p>凜冽邪风呼啸袭来</p>
-</blockquote>
-<h2 id="Blew-down-the-doors-to-let-me-in"><a href="#Blew-down-the-doors-to-let-me-in" class="headerlink" title="Blew down the doors to let me in"></a>Blew down the doors to let me in</h2><blockquote>
-<p>吹散重门使我深陷阴霾</p>
-</blockquote>
-<h2 id="Shattered-windows-and-the-sound-of-drums"><a href="#Shattered-windows-and-the-sound-of-drums" class="headerlink" title="Shattered windows and the sound of drums"></a>Shattered windows and the sound of drums</h2><blockquote>
-<p>断壁残垣礼崩乐坏</p>
-</blockquote>
-<h2 id="People-couldn’t-believe-what-I’d-become"><a href="#People-couldn’t-believe-what-I’d-become" class="headerlink" title="People couldn’t believe what I’d become"></a>People couldn’t believe what I’d become</h2><blockquote>
-<p>世人不敢相信我已当年不再</p>
-</blockquote>
-<h2 id="Revolutionaries-wait"><a href="#Revolutionaries-wait" class="headerlink" title="Revolutionaries wait"></a>Revolutionaries wait</h2><blockquote>
-<p>起义大军翘首期待</p>
-</blockquote>
-<h2 id="For-my-head-on-a-silver-plate"><a href="#For-my-head-on-a-silver-plate" class="headerlink" title="For my head on a silver plate"></a>For my head on a silver plate</h2><blockquote>
-<p>有朝一日我站上断头台</p>
-</blockquote>
-<h2 id="Just-a-puppet-on-a-lonely-string"><a href="#Just-a-puppet-on-a-lonely-string" class="headerlink" title="Just a puppet on a lonely string"></a>Just a puppet on a lonely string</h2><blockquote>
-<p>恰如傀儡随吊线寂寞摇摆</p>
-</blockquote>
-<h2 id="Oh-who-would-ever-want-to-be-king"><a href="#Oh-who-would-ever-want-to-be-king" class="headerlink" title="Oh who would ever want to be king"></a>Oh who would ever want to be king</h2><blockquote>
-<p>悲哉谁又曾渴望万人膜拜?</p>
-</blockquote>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/17/myfirstblog/" rel="prev" title="第一篇博客">
+      <i class="fa fa-chevron-left"></i> 第一篇博客
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -416,6 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">实验目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">实验思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80"><span class="nav-number">2.1.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">2.2.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%B4%E6%8A%A4%E5%86%85%E5%AE%B9"><span class="nav-number">2.3.</span> <span class="nav-text">维护内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%86%E8%8A%82"><span class="nav-number">3.</span> <span class="nav-text">代码细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F"><span class="nav-number">3.1.</span> <span class="nav-text">菜单栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.2.</span> <span class="nav-text">功能实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3"><span class="nav-number">3.2.1.</span> <span class="nav-text">文件相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%AA%E5%88%87%E6%9D%BF%E4%BA%92%E5%8A%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">剪切板互动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E7%AA%97%E5%8F%A3%E5%8A%9F%E8%83%BD"><span class="nav-number">3.3.</span> <span class="nav-text">新窗口功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">实验总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
