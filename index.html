@@ -159,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/22/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/24/myfirstblog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -173,7 +173,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/22/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/" class="post-title-link" itemprop="url">JAVA实验之GUI文件管理系统</a>
+            <a href="/2020/11/24/myfirstblog/" class="post-title-link" itemprop="url">第一篇博客</a>
         </h2>
 
         <div class="post-meta">
@@ -183,99 +183,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-22 21:20:32" itemprop="dateCreated datePublished" datetime="2020-11-22T21:20:32+08:00">2020-11-22</time>
+              <time title="创建时间：2020-11-24 17:57:20" itemprop="dateCreated datePublished" datetime="2020-11-24T17:57:20+08:00">2020-11-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-24 00:16:31" itemprop="dateModified" datetime="2020-11-24T00:16:31+08:00">2020-11-24</time>
+                <time title="修改时间：2020-11-17 18:08:24" itemprop="dateModified" datetime="2020-11-17T18:08:24+08:00">2020-11-17</time>
               </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>885</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手）</p>
-<h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>通过java自带的swing、awt包实现类似于记事本的小程序，能够对txt文件进行基本的操作如：新建、打开、保存、复制、粘贴，以及稍微复杂且实用的功能如查找与替换。</p>
-<h2 id="实验思路"><a href="#实验思路" class="headerlink" title="实验思路"></a>实验思路</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。</p>
-<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>菜单栏中就是一个个类似于按钮的东西的陈列，给每个物件添加监听器和监听事件就能实现相应功能，相应功能相当于已经封装好了。<br>此处查找和替换稍微有点不同，需要再创建两个新类，然后在相应的监听器事件中实例化。</p>
-<h3 id="维护内容"><a href="#维护内容" class="headerlink" title="维护内容"></a>维护内容</h3><p>为了使程序使用起来更贴心，需要随时维护内容是否保存。</p>
-<h2 id="代码细节"><a href="#代码细节" class="headerlink" title="代码细节"></a>代码细节</h2><p>好心的助教哥哥已经写好了大概模板，我只需要按照相应的功能改写就好了。</p>
-<h3 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h3><p>创建JMenu对象，然后加入JMenu就是菜单栏上显示的，再在每个JMenu中加入JMenuItem就是每一项功能。</p>
-<h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><p>像什么new close exit比较简单就不再赘述。<br>余下分为两类一类与文件相关一类与系统剪切板互动。</p>
-<h4 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h4><p>open其实就是从一个txt文件读取内容然后显示在文字框内，我查阅资料选择Scanner类来完成。其实这里有一些些小问题，不能很好的读取空格和回车的内容，但是我也不想管了。save saveas类似，助教已经给了PrintWriter类的参考，我照着就完成了。注意第一次打开的文件save和saveas其实是一样的功能。</p>
-<h4 id="剪切板互动"><a href="#剪切板互动" class="headerlink" title="剪切板互动"></a>剪切板互动</h4><p>复制粘贴区别仅仅在于是否改变文本框内的内容。使用Clipboard就能很好的完成。</p>
-<h3 id="新窗口功能"><a href="#新窗口功能" class="headerlink" title="新窗口功能"></a>新窗口功能</h3><p>find和replace大同小异，都是创建新类继承JFrame，然后各种用一个函数实现自己功能。我选用FlowLayout布局。find内部功能主要靠indexOf获得目标字符串在内容中的位置然后调整光标选中区域即可。replace就更简单，replaceAll，耗子尾汁。</p>
-<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>虽然这个项目比较简单，但奈何我太菜，依旧用了大概五六个小时，毕竟刚开始对GUI确实比较陌生。经过这次实验，我感觉收获良多。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/myfirstblog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="流逸">
-      <meta itemprop="description" content="凡是过往，皆为序章。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星茗轩">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/17/myfirstblog/" class="post-title-link" itemprop="url">第一篇博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-17 17:30:22 / 修改时间：18:08:24" itemprop="dateCreated datePublished" datetime="2020-11-17T17:30:22+08:00">2020-11-17</time>
-            </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -392,6 +308,90 @@
 <h2 id="Oh-who-would-ever-want-to-be-king"><a href="#Oh-who-would-ever-want-to-be-king" class="headerlink" title="Oh who would ever want to be king"></a>Oh who would ever want to be king</h2><blockquote>
 <p>悲哉谁又曾渴望万人膜拜?</p>
 </blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/24/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="流逸">
+      <meta itemprop="description" content="凡是过往，皆为序章。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星茗轩">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/24/java%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/" class="post-title-link" itemprop="url">JAVA实验之GUI文件管理系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-24 17:57:20 / 修改时间：00:16:31" itemprop="dateCreated datePublished" datetime="2020-11-24T17:57:20+08:00">2020-11-24</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>885</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手）</p>
+<h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>通过java自带的swing、awt包实现类似于记事本的小程序，能够对txt文件进行基本的操作如：新建、打开、保存、复制、粘贴，以及稍微复杂且实用的功能如查找与替换。</p>
+<h2 id="实验思路"><a href="#实验思路" class="headerlink" title="实验思路"></a>实验思路</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>菜单栏中就是一个个类似于按钮的东西的陈列，给每个物件添加监听器和监听事件就能实现相应功能，相应功能相当于已经封装好了。<br>此处查找和替换稍微有点不同，需要再创建两个新类，然后在相应的监听器事件中实例化。</p>
+<h3 id="维护内容"><a href="#维护内容" class="headerlink" title="维护内容"></a>维护内容</h3><p>为了使程序使用起来更贴心，需要随时维护内容是否保存。</p>
+<h2 id="代码细节"><a href="#代码细节" class="headerlink" title="代码细节"></a>代码细节</h2><p>好心的助教哥哥已经写好了大概模板，我只需要按照相应的功能改写就好了。</p>
+<h3 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h3><p>创建JMenu对象，然后加入JMenu就是菜单栏上显示的，再在每个JMenu中加入JMenuItem就是每一项功能。</p>
+<h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><p>像什么new close exit比较简单就不再赘述。<br>余下分为两类一类与文件相关一类与系统剪切板互动。</p>
+<h4 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h4><p>open其实就是从一个txt文件读取内容然后显示在文字框内，我查阅资料选择Scanner类来完成。其实这里有一些些小问题，不能很好的读取空格和回车的内容，但是我也不想管了。save saveas类似，助教已经给了PrintWriter类的参考，我照着就完成了。注意第一次打开的文件save和saveas其实是一样的功能。</p>
+<h4 id="剪切板互动"><a href="#剪切板互动" class="headerlink" title="剪切板互动"></a>剪切板互动</h4><p>复制粘贴区别仅仅在于是否改变文本框内的内容。使用Clipboard就能很好的完成。</p>
+<h3 id="新窗口功能"><a href="#新窗口功能" class="headerlink" title="新窗口功能"></a>新窗口功能</h3><p>find和replace大同小异，都是创建新类继承JFrame，然后各种用一个函数实现自己功能。我选用FlowLayout布局。find内部功能主要靠indexOf获得目标字符串在内容中的位置然后调整光标选中区域即可。replace就更简单，replaceAll，耗子尾汁。</p>
+<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>虽然这个项目比较简单，但奈何我太菜，依旧用了大概五六个小时，毕竟刚开始对GUI确实比较陌生。经过这次实验，我感觉收获良多。</p>
 
       
     </div>
@@ -610,8 +610,6 @@ $(document).ready(function() {
 <script src="/js/next-boot.js"></script>
 
 
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
 
 
   
