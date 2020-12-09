@@ -30,7 +30,7 @@
 <meta property="og:description" content="这波啊，这波是造福后来人。只要他找得到。依旧是刻骨铭心的c++，头昏眼花的各种算法，gtmd数据结构。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-27T15:48:22.705Z">
-<meta property="article:modified_time" content="2020-11-28T05:53:50.217Z">
+<meta property="article:modified_time" content="2020-11-28T06:03:32.697Z">
 <meta property="article:author" content="流逸">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-28 13:53:50" itemprop="dateModified" datetime="2020-11-28T13:53:50+08:00">2020-11-28</time>
+                <time title="修改时间：2020-11-28 14:03:32" itemprop="dateModified" datetime="2020-11-28T14:03:32+08:00">2020-11-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,49 +273,46 @@
         <p>这波啊，这波是造福后来人。只要他找得到。<br>依旧是刻骨铭心的c++，头昏眼花的各种算法，gtmd数据结构。</p>
 <a id="more"></a>
 <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><ol>
-<li><p>掌握图的基本概念，描述方法；遍历方法。</p>
-</li>
-<li><p>掌握图的最短路径和最小生成树算法。</p>
-<h2 id="试验项目内容"><a href="#试验项目内容" class="headerlink" title="试验项目内容"></a>试验项目内容</h2></li>
-<li><p>图的存储结构使用邻接矩阵。</p>
-</li>
-<li><p>创建图操作类，支持BFS遍历、DFS遍历、求单源最短路径、求最小生成树、判断是否存在回路等五个功能，这些功能封装成图操作类的成员函数。</p>
-</li>
-<li><p>输入图的节点数n（不超过10个）、边数m，节点分别用0到n-1表示。</p>
-</li>
-<li><p>采用“起始节点，终止节点，权值”输入图的m条边，创建图。</p>
-</li>
-<li><p>输出从节点0开始的BFS遍历、DFS遍历节点遍历顺序。</p>
-</li>
-<li><p>输出从节点0到其余节点的最短路径及最短路径长度，如果没有路经，输出0。</p>
-</li>
-<li><p>输出图的最小生成树包含的边，边用“起始节点，终止节点，权值”表示。</p>
-<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><p>先抄上书上代码，完成图的基础操作实现。<br>书上本来有代码注释，但是我在抄的时候没有打上去，将就着看吧（手动狗头）。</p>
-<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p> class Graph {<br> private:</p>
-<pre><code> void operator =(const Graph&amp;) &#123;&#125;
- Graph(const Graph&amp;)&#123;&#125;</code></pre>
-<p> public:</p>
-<pre><code> Graph()&#123;&#125;
- virtual ~Graph()&#123;&#125;
-
- virtual void Init(int n) =0;
-
- virtual int n() = 0;
- virtual int e() = 0;
- virtual int first(int v)=0;
-
- virtual int next(int v,int w)=0;
-
- virtual void setEdge(int v1,int v2,int wght)=0;
-
- virtual void delEdge(int v1,int v2) =0;
- virtual bool isEdge(int i,int j)=0;
- virtual int weight(int v1,int v2)=0;
- virtual int getMark(int v) =0;
- virtual void setMark(int v,int val) =0;</code></pre>
-<p> };</p>
-</li>
+<li>掌握图的基本概念，描述方法；遍历方法。</li>
+<li>掌握图的最短路径和最小生成树算法。</li>
 </ol>
+<hr>
+<h2 id="试验项目内容"><a href="#试验项目内容" class="headerlink" title="试验项目内容"></a>试验项目内容</h2><ol>
+<li>图的存储结构使用邻接矩阵。</li>
+<li>创建图操作类，支持BFS遍历、DFS遍历、求单源最短路径、求最小生成树、判断是否存在回路等五个功能，这些功能封装成图操作类的成员函数。</li>
+<li>输入图的节点数n（不超过10个）、边数m，节点分别用0到n-1表示。</li>
+<li>采用“起始节点，终止节点，权值”输入图的m条边，创建图。</li>
+<li>输出从节点0开始的BFS遍历、DFS遍历节点遍历顺序。</li>
+<li>输出从节点0到其余节点的最短路径及最短路径长度，如果没有路经，输出0。</li>
+<li>输出图的最小生成树包含的边，边用“起始节点，终止节点，权值”表示。</li>
+</ol>
+<hr>
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><p>先抄上书上代码，完成图的基础操作实现。<br>书上本来有代码注释，但是我在抄的时候没有打上去，将就着看吧（手动狗头）。</p>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><pre><code>class Graph &#123;
+private:
+    void operator =(const Graph&amp;) &#123;&#125;
+    Graph(const Graph&amp;)&#123;&#125;
+public:
+    Graph()&#123;&#125;
+    virtual ~Graph()&#123;&#125;
+
+    virtual void Init(int n) =0;
+
+    virtual int n() = 0;
+    virtual int e() = 0;
+    virtual int first(int v)=0;
+
+    virtual int next(int v,int w)=0;
+
+    virtual void setEdge(int v1,int v2,int wght)=0;
+
+    virtual void delEdge(int v1,int v2) =0;
+    virtual bool isEdge(int i,int j)=0;
+    virtual int weight(int v1,int v2)=0;
+    virtual int getMark(int v) =0;
+    virtual void setMark(int v,int val) =0;
+&#125;;</code></pre>
+<hr>
 <h3 id="图的邻接矩阵实现"><a href="#图的邻接矩阵实现" class="headerlink" title="图的邻接矩阵实现"></a>图的邻接矩阵实现</h3><pre><code>class Graphm: public Graph&#123;
 private:
     int numVertex, numEdge;
@@ -457,6 +454,7 @@ void Remark(int n)&#123;
         mark[i] = UNVISITED;
     &#125;
 &#125;</code></pre>
+<hr>
 <h3 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h3><p>Dijkstra算法，书上代码大概的逻辑已然实现，我只需改进让其输出路径即可。注意调用该函数是是传入&amp;G即G的地址，并且我拓展一个参数及数组way用来储存路径。本来每个路径我打算用链表结果发现很复杂，于是灵机一动决定使用字符串。只要在更新D数组的时候同时更新way路径数组即可</p>
 <p>但是当我写好发现运行不了。再仔细看了好久书，发现书上是有向图而该题是无向图。当时心里那个绝望啊…</p>
 <pre><code>void Dijkstra(Graphm* G,int* D,int s,string* Way)&#123;
@@ -479,6 +477,7 @@ void Remark(int n)&#123;
         &#125;
     &#125;
 &#125;</code></pre>
+<hr>
 <h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>输出最小生成树，我选用Prime算法（看起来比较简单）。理解书上代码的思路，我只需要写好AddEdgetoMST函数即可。由于要按照权值从小到大输出边，所以我打算用三个数组分别储存起点终点和权值。我起初是在Graphhelp类中定义了三个属性，可是始终无法将值储存进去。（段错误？？？）于是干脆给Prim算法多几个参数，直接传入三个数组指针。</p>
 <p>在排序时，是先按照权值，然后再分别按照起点，同时保证起点小于等于终点，我选用冒泡排序（虽然相对较慢但是毕竟简单）</p>
 <pre><code>void Prim(Graphm* G,int* D,int s,int* v1,int* v2,int* weight)&#123;
@@ -551,6 +550,7 @@ void PrintPrimResult(int* PrimresultV1,int* PrimresultWeight,int* PrimresultV2)&
         cout &lt;&lt; PrimresultV1[i] &lt;&lt; &quot; &quot; &lt;&lt; PrimresultV2[i] &lt;&lt; &quot; &quot; &lt;&lt; PrimresultWeight[i] &lt;&lt; endl;
     &#125;
 &#125;</code></pre>
+<hr>
 <h3 id="是否有回路"><a href="#是否有回路" class="headerlink" title="是否有回路"></a>是否有回路</h3><p>判断是否有回路，我按照前几种的思路，一个一个点标记，不断扩大连通分支，而每次加入一个点时，遍历已加入的点，若新的边数大于等于二，则显然有回路。</p>
 <p>实验报告里不敢写，目测该函数有bug，毕竟测试样例太少。建议自行谷歌。</p>
 <pre><code>bool HaveCircuit(Graphm* G)&#123;
@@ -573,7 +573,9 @@ void PrintPrimResult(int* PrimresultV1,int* PrimresultWeight,int* PrimresultV2)&
     &#125;
     return true;
 &#125;</code></pre>
+<hr>
 <h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>对于数据结构我是真的服气，这破玩意逻辑思路简单，但是要用c++代码来实现简直就像在刀尖上找跳蚤（奇怪的比喻）。但是当最后终于做完后，一声仰天长叹的感觉，”一蓑烟雨任平生”。</p>
+<hr>
 
     </div>
 
@@ -644,7 +646,10 @@ void PrintPrimResult(int* PrimresultV1,int* PrimresultWeight,int* PrimresultV2)&
     <a href="/2020/11/24/myfirstblog/" rel="prev" title="HelloWorld">
       <i class="fa fa-chevron-left"></i> HelloWorld
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%9B%9B/" rel="next" title="数据结构实验之有理数的堆排序">
+      数据结构实验之有理数的堆排序 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -724,7 +729,7 @@ void PrintPrimResult(int* PrimresultV1,int* PrimresultWeight,int* PrimresultV2)&
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -779,13 +784,13 @@ void PrintPrimResult(int* PrimresultV1,int* PrimresultWeight,int* PrimresultV2)&
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">19k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

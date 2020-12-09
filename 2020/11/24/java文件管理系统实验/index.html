@@ -30,7 +30,7 @@
 <meta property="og:description" content="鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-24T09:57:20.537Z">
-<meta property="article:modified_time" content="2020-11-27T15:30:18.289Z">
+<meta property="article:modified_time" content="2020-12-01T09:03:14.377Z">
 <meta property="article:author" content="流逸">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-27 23:30:18" itemprop="dateModified" datetime="2020-11-27T23:30:18+08:00">2020-11-27</time>
+                <time title="修改时间：2020-12-01 17:03:14" itemprop="dateModified" datetime="2020-12-01T17:03:14+08:00">2020-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,21 +273,35 @@
         <p>鸽了这么多天，今天终于想起来把java实验再来梳理一下（先写个简单的练练手）</p>
 <a id="more"></a>
 <h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>利用Java输入输出系统、GUI程序设计等知识，实现文本编辑器的设计与实现。提升运用面向对象程序设计思想解决实际问题的能力。</p>
+<hr>
 <h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>硬件：PC 机<br>软件：JAVA Eclipse</p>
+<hr>
 <h2 id="实验具体要求"><a href="#实验具体要求" class="headerlink" title="实验具体要求"></a>实验具体要求</h2><p>实现文本编辑的各项所需功能。主要功能包含以下内容：</p>
 <ul>
 <li>实现文件的新建、保存等基本功能。</li>
 <li>可以打开已保存的文件，读取文件的，实现查看，编辑等操作。</li>
 <li>显示、编辑修改文本信息等主要处理功能。可对相关信息进行复制，剪切，粘贴等操作。</li>
-<li>其他扩展功能可自由发挥。<h2 id="实验思路"><a href="#实验思路" class="headerlink" title="实验思路"></a>实验思路</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3>打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3>菜单栏中就是一个个类似于按钮的东西的陈列，给每个物件添加监听器和监听事件就能实现相应功能，相应功能相当于已经封装好了。<br>此处查找和替换稍微有点不同，需要再创建两个新类，然后在相应的监听器事件中实例化。<h3 id="维护内容"><a href="#维护内容" class="headerlink" title="维护内容"></a>维护内容</h3>为了使程序使用起来更贴心，需要随时维护内容是否保存。<h2 id="代码细节"><a href="#代码细节" class="headerlink" title="代码细节"></a>代码细节</h2>好心的助教哥哥已经写好了大概模板，我只需要按照相应的功能改写就好了。<h3 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h3>创建JMenu对象，然后加入JMenu就是菜单栏上显示的，再在每个JMenu中加入JMenuItem就是每一项功能。</li>
+<li>其他扩展功能可自由发挥。</li>
 </ul>
+<hr>
+<h2 id="实验思路"><a href="#实验思路" class="headerlink" title="实验思路"></a>实验思路</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>打开记事本，其实主要构图就是上方的菜单栏，下方就是一个多行的文本输入框，GUI布局比较简单，直接选用默认即可。</p>
+<hr>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>菜单栏中就是一个个类似于按钮的东西的陈列，给每个物件添加监听器和监听事件就能实现相应功能，相应功能相当于已经封装好了。<br>此处查找和替换稍微有点不同，需要再创建两个新类，然后在相应的监听器事件中实例化。</p>
+<hr>
+<h3 id="维护内容"><a href="#维护内容" class="headerlink" title="维护内容"></a>维护内容</h3><p>为了使程序使用起来更贴心，需要随时维护内容是否保存。</p>
+<hr>
+<h2 id="代码细节"><a href="#代码细节" class="headerlink" title="代码细节"></a>代码细节</h2><p>好心的助教哥哥已经写好了大概模板，我只需要按照相应的功能改写就好了。</p>
+<hr>
+<h3 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h3><p>创建JMenu对象，然后加入JMenu就是菜单栏上显示的，再在每个JMenu中加入JMenuItem就是每一项功能。</p>
 <pre><code>        JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu(&quot;File&quot;);
         menuBar.add(fileMenu);
         JMenuItem newfile = new JMenuItem(&quot;new&quot;);
         fileMenu.add(newfile);
         setJMenuBar(menuBar);</code></pre>
+<hr>
 <h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><p>像什么new close exit比较简单就不再赘述。<br>余下分为两类一类与文件相关一类与系统剪切板互动。</p>
+<hr>
 <h4 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h4><p>open其实就是从一个txt文件读取内容然后显示在文字框内，我查阅资料选择Scanner类来完成。其实这里有一些些小问题，不能很好的读取空格和回车的内容，但是我也不想管了。save saveas类似，助教已经给了PrintWriter类的参考，我照着就完成了。注意第一次打开的文件save和saveas其实是一样的功能。</p>
 <pre><code>        newfile.addActionListener(new ActionListener() &#123;
             public void actionPerformed (ActionEvent e) &#123;
@@ -400,6 +414,7 @@
                 System.exit(0);
             &#125;
         &#125;);</code></pre>
+<hr>
 <h4 id="剪切板互动"><a href="#剪切板互动" class="headerlink" title="剪切板互动"></a>剪切板互动</h4><p>复制粘贴区别仅仅在于是否改变文本框内的内容。使用Clipboard就能很好的完成。</p>
 <pre><code>        copyfile.addActionListener(new ActionListener() &#123;
             public void actionPerformed (ActionEvent e) &#123;
@@ -469,6 +484,7 @@
                 new ReplaceFrame();
             &#125;
         &#125;);</code></pre>
+<hr>
 <h3 id="新窗口功能"><a href="#新窗口功能" class="headerlink" title="新窗口功能"></a>新窗口功能</h3><p>find和replace大同小异，都是创建新类继承JFrame，然后各种用一个函数实现自己功能。我选用FlowLayout布局。find内部功能主要靠indexOf获得目标字符串在内容中的位置然后调整光标选中区域即可。replace就更简单，replaceAll，耗子尾汁。</p>
 <pre><code>        button1.addActionListener(new ActionListener() &#123;
             public void actionPerformed (ActionEvent e) &#123;
@@ -503,6 +519,7 @@
             &#125;                                
             Menuclass.textPane.setText(content1.replaceAll(key1, key2));
         &#125;</code></pre>
+<hr>
 <h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>虽然这个项目比较简单，但奈何我太菜，依旧用了大概五六个小时，毕竟刚开始对GUI确实比较陌生。经过这次实验，我感觉收获良多。</p>
 
     </div>
@@ -654,7 +671,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -709,13 +726,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">19k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
